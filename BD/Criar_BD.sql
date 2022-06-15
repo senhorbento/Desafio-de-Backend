@@ -9,22 +9,47 @@ CREATE TABLE Contas (
 );
 
 CREATE TABLE Depositos (
-    id_conta    INT PRIMARY KEY AUTO_INCREMENT
-    valor       INT NOT NULL
+    id          INT PRIMARY KEY AUTO_INCREMENT,
+    id_conta    INT NOT NULL,
+    valor       INT NOT NULL,
+    data        DATE NOT NULL,
     FOREIGN KEY (id_conta) REFERENCES Contas(id)
 );
 
 CREATE TABLE Saques (
-    id_conta    INT PRIMARY KEY AUTO_INCREMENT
-    valor       INT NOT NULL
+    id          INT PRIMARY KEY AUTO_INCREMENT,
+    id_conta    INT NOT NULL,
+    valor       INT NOT NULL,
+    data        DATE NOT NULL,
     FOREIGN KEY (id_conta) REFERENCES Contas(id)
 );
 
 CREATE TABLE PagamentoBoletos (
-    id_conta    INT PRIMARY KEY AUTO_INCREMENT
-    valor       INT NOT NULL
+    id          INT PRIMARY KEY AUTO_INCREMENT,
+    id_conta    INT NOT NULL,
+    valor       INT NOT NULL,
+    data        DATE NOT NULL,
     FOREIGN KEY (id_conta) REFERENCES Contas(id)
 );
 
---transferências para outros bancos (agência, conta e documento)
---recebimento de transferências de outros bancos
+CREATE TABLE EnvioTransferenciaExterna(
+    id                  INT PRIMARY KEY AUTO_INCREMENT,
+    id_conta            INT NOT NULL,
+    agencia_destino     INT NOT NULL,
+    conta_destino       INT NOT NULL,
+    documento           INT NOT NULL,
+    valor               INT NOT NULL,
+    data                DATE NOT NULL,
+    FOREIGN KEY (id_conta) REFERENCES Contas(id)
+);
+
+CREATE TABLE RecebimentoTransferenciaExterna(
+    id                  INT PRIMARY KEY AUTO_INCREMENT,
+    id_conta            INT NOT NULL,
+    agencia_destino     INT NOT NULL,
+    conta_destino       INT NOT NULL,
+    documento           INT NOT NULL,
+    valor               INT NOT NULL,
+    data                DATE NOT NULL,
+    FOREIGN KEY (id_conta) REFERENCES Contas(id)
+);
