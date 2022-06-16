@@ -1,3 +1,5 @@
+using System;
+
 using Entidades;
 
 namespace Main 
@@ -5,15 +7,15 @@ namespace Main
     public class Metodo
     {
         int totalConta;
-        public Dictionary <String, int> QuantoPagar(List <Item> listaItem, List <Email> listaEmail)
+        public Dictionary <String, int> QuantoPagar (List <Item> listaItem, List <Email> listaEmail)
         {
-            if(listaItem != null)
+            if (listaItem != null)
             {
-                if(listaEmail != null)
+                if (listaEmail != null)
                 {
-                    if(!ValidarEmailsRepetidos(listaEmail))
+                    if (!ValidarEmailsRepetidos(listaEmail))
                     {
-                        if(!ValidarNegativo(listaItem))
+                        if (!ValidarNegativo(listaItem))
                         {
                             totalConta = somarValores(listaItem);
                             return DividirEntreEmails(totalConta, listaEmail);
