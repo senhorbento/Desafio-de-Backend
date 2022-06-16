@@ -11,9 +11,9 @@ namespace Main
         {
             int totalConta;
             Dictionary<String, int> dicionario = new();
-            if (listaItem.Count > 0)
+            if (!ValidarListaItemVazia(listaItem))
             {
-                if (listaEmail.Count > 0)
+                if (!ValidarListaEmailVazia(listaEmail))
                 {
                     if (!ValidarEmailsRepetidos(listaEmail))
                     {
@@ -44,7 +44,21 @@ namespace Main
             return dicionario;
         }
 
-        private static bool ValidarEmailsRepetidos (List <Email> listaEmail)
+        public static bool ValidarListaItemVazia(List<Item> lista)
+        {
+            if (lista.Count > 0)
+                return false;
+            return true;
+        }
+
+        public static bool ValidarListaEmailVazia(List<Email> lista)
+        {
+            if (lista.Count > 0)
+                return false;
+            return true;
+        }
+
+        public static bool ValidarEmailsRepetidos (List <Email> listaEmail)
         {
             int qtd;
             foreach (Email item in listaEmail)
@@ -61,7 +75,7 @@ namespace Main
             return false;
         }
 
-        private static bool ValidarNegativo (List <Item> listaItem)
+        public static bool ValidarNegativo (List <Item> listaItem)
         {
             foreach (Item item in listaItem)
             {
@@ -71,7 +85,7 @@ namespace Main
             return false;
         }
 
-        private static int SomarValores (List <Item> listaItem)
+        public static int SomarValores (List <Item> listaItem)
         {
             int valor = 0;
             foreach (Item item in listaItem)
@@ -81,7 +95,7 @@ namespace Main
             return valor;
         }
 
-        private static Dictionary <String, int> DividirEntreEmails (int totalConta, List <Email> listaEmail)
+        public static Dictionary <String, int> DividirEntreEmails (int totalConta, List <Email> listaEmail)
         {
             Dictionary <String, int> dicionario = new ();
             int valorIndividual = totalConta / listaEmail.Count;
