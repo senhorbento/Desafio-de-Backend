@@ -7,12 +7,13 @@ namespace Main
 {
     public class Metodo
     {
-        int totalConta;
-        public Dictionary <String, int> QuantoPagar (List <Item> listaItem, List <Email> listaEmail)
+        public static Dictionary <String, int> QuantoPagar (List <Item> listaItem, List <Email> listaEmail)
         {
-            if (listaItem != null)
+            int totalConta;
+            Dictionary<String, int> dicionario = new();
+            if (listaItem.Count > 0)
             {
-                if (listaEmail != null)
+                if (listaEmail.Count > 0)
                 {
                     if (!ValidarEmailsRepetidos(listaEmail))
                     {
@@ -23,26 +24,27 @@ namespace Main
                         }
                         else
                         {
-                            break;
+                            Console.WriteLine("Encontrado valor negativo!");
                         }
                     }
                     else
                     {
-                        break;
+                        Console.WriteLine("Encontrado email repetido!");
                     }
                 }
                 else
                 {
-                    break;
+                    Console.WriteLine("Lista email vazia!");
                 }
             }
             else
             {
-                break;
+                Console.WriteLine("Lista item vazia!");
             }
+            return dicionario;
         }
 
-        private bool ValidarEmailsRepetidos (List <Email> listaEmail)
+        private static bool ValidarEmailsRepetidos (List <Email> listaEmail)
         {
             int qtd=0;
             foreach (Email item in listaEmail)
@@ -60,9 +62,9 @@ namespace Main
             return false;
         }
 
-        private bool ValidarNegativo (List <Item> listaItem)
+        private static bool ValidarNegativo (List <Item> listaItem)
         {
-            foreach (Email item in listaItem)
+            foreach (Item item in listaItem)
             {
                 if(item.quantidade < 0 || item.preco < 0)
                 return true;
@@ -70,17 +72,17 @@ namespace Main
             return false;
         }
 
-        private int somarValores (List <Item> listaItem)
+        private static int somarValores (List <Item> listaItem)
         {
             int valor = 0;
-            foreach (Email item in listaItem)
+            foreach (Item item in listaItem)
             {
                 valor += (item.quantidade * item.preco);
             }
             return valor;
         }
 
-        private Dictionary <String, int> DividirEntreEmails (int totalConta, List <Email> listaEmail)
+        private static Dictionary <String, int> DividirEntreEmails (int totalConta, List <Email> listaEmail)
         {
             Dictionary <String, int> dicionario = new ();
             int valorIndividual = totalConta / listaEmail.Count;
@@ -90,12 +92,12 @@ namespace Main
             {
                 if(resto > 0)
                 {
-                    dicionario.Add(valorIndividual+1,item);
+                    dicionario.Add(item.email, valorIndividual + 1);
                     resto--;
                 }
                 else
                 {
-                    dicionario.Add(valorIndividual,item);
+                    dicionario.Add(item.email, valorIndividual);
                 }
 
             }
