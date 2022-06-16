@@ -46,17 +46,16 @@ namespace Main
 
         private static bool ValidarEmailsRepetidos (List <Email> listaEmail)
         {
-            int qtd=0;
+            int qtd;
             foreach (Email item in listaEmail)
             {
+                qtd = 0;
                 foreach (Email item2 in listaEmail)
                 {
-                    if(item == item2){
+                    if (item.email == item2.email)
                         qtd++;
-                    }
-                    if(qtd==2){
+                    if(qtd == 2)
                         return true;
-                    }
                 }
             }
             return false;
