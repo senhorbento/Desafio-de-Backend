@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using Entidades;
 
-namespace Main 
+namespace Metodo
 {
     public class Metodo
     {
