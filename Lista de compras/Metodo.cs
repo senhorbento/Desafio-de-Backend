@@ -19,27 +19,27 @@ namespace Main
                     {
                         if (!ValidarNegativo(listaItem))
                         {
-                            totalConta = somarValores(listaItem);
+                            totalConta = SomarValores(listaItem);
                             return DividirEntreEmails(totalConta, listaEmail);
                         }
                         else
                         {
-                            Console.WriteLine("Encontrado valor negativo!");
+                            dicionario.Add("Encontrado valor negativo!", -1);
                         }
                     }
                     else
                     {
-                        Console.WriteLine("Encontrado email repetido!");
+                        dicionario.Add("Encontrado email repetido!", -1);
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Lista email vazia!");
+                    dicionario.Add("Lista email vazia!", -1);
                 }
             }
             else
             {
-                Console.WriteLine("Lista item vazia!");
+                dicionario.Add("Lista item vazia!", -1);
             }
             return dicionario;
         }
@@ -71,7 +71,7 @@ namespace Main
             return false;
         }
 
-        private static int somarValores (List <Item> listaItem)
+        private static int SomarValores (List <Item> listaItem)
         {
             int valor = 0;
             foreach (Item item in listaItem)
