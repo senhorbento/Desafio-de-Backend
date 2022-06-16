@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 using Entidades;
 
@@ -39,9 +40,6 @@ namespace Main
             {
                 break;
             }
-
-            Retornar um mapa/dicionário onde a chave será o e-mail e o valor será quanto ele deve pagar nessa conta.
-            Ter testes unitários.
         }
 
         private bool ValidarEmailsRepetidos (List <Email> listaEmail)
@@ -84,7 +82,23 @@ namespace Main
 
         public Dictionary <String, int> DividirEntreEmails (int totalConta, List <Email> listaEmail)
         {
-            valorIndividual = totalConta/listaEmail.Count;
+            Dictionary <String, int> dicionario = new ();
+            int valorIndividual = totalConta/listaEmail.Count;
+            int resto = totalConta%listaEmail.Count;
+            foreach(Email item in listaEmail)
+            {
+                if(resto > 0)
+                {
+                    dicionario.Add(valorIndividual+1,item);
+                    resto--;
+                }
+                else
+                {
+                    dicionario.Add(valorIndividual,item);
+                }
+
+            }
+            return dicionario;
         }
 
     }
