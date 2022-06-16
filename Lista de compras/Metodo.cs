@@ -80,11 +80,11 @@ namespace Main
             return valor;
         }
 
-        public Dictionary <String, int> DividirEntreEmails (int totalConta, List <Email> listaEmail)
+        private Dictionary <String, int> DividirEntreEmails (int totalConta, List <Email> listaEmail)
         {
             Dictionary <String, int> dicionario = new ();
-            int valorIndividual = totalConta/listaEmail.Count;
-            int resto = totalConta%listaEmail.Count;
+            int valorIndividual = totalConta / listaEmail.Count;
+            int resto = totalConta % listaEmail.Count;
             foreach(Email item in listaEmail)
             {
                 if(resto > 0)
