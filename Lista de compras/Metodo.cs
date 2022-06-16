@@ -85,6 +85,7 @@ namespace Main
             Dictionary <String, int> dicionario = new ();
             int valorIndividual = totalConta / listaEmail.Count;
             int resto = totalConta % listaEmail.Count;
+
             foreach(Email item in listaEmail)
             {
                 if(resto > 0)
