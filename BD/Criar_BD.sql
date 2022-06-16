@@ -1,5 +1,6 @@
 -- Usado MySQL
-CREATE data_pagamentoBASE desafio;
+
+CREATE DATABASE desafio;
 USE desafio;
 
 CREATE TABLE Contas (
