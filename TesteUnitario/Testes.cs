@@ -34,7 +34,7 @@ namespace TesteUnitario
         }
 
         [Fact]
-        public void TesteValidarEmailsRepetidos()
+        public void TesteListaEmailVazia()
         {
             List<Email> listaEmail = new();
             Assert.True(Metodo.ValidarListaEmailVazia(listaEmail));
