@@ -12,7 +12,7 @@ namespace TesteUnitario
     {
         public static void PreencherListaItem(List<Item> listaItem)
         {
-            Item item = new Item();
+            Item item = new();
             item.preco = 100;
             item.quantidade = 10;
             item.item = "Banana";
@@ -24,5 +24,21 @@ namespace TesteUnitario
             item.item = "Uva";
             listaItem.Add(item);
         }
+
+        public static void PreencherListaEmail (List<Email> listaEmail)
+        {
+            Email email = new();
+            email.email = "lucas@gmail.com.br";
+            listaEmail.Add(email);
+
+            email = new();
+            email.email = "irineu@gmail.com.br";
+            listaEmail.Add(email);
+
+            email = new();
+            email.email = "tadeu@gmail.com.br";
+            listaEmail.Add(email);
+        }
+
     }
 }
