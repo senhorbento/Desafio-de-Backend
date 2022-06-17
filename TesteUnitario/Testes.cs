@@ -10,7 +10,7 @@ namespace TesteUnitario
     public class Testes
     {
         [Fact]
-        public void TesteQuantoPagar()
+        public void TesteQuantoPagar1()
         {
             List<Item> listaItem = new();
             List<Email> listaEmail = new();
@@ -22,6 +22,50 @@ namespace TesteUnitario
             dicionario.Add("lucas@gmail.com.br", 724);
             dicionario.Add("irineu@gmail.com.br", 723);
             dicionario.Add("tadeu@gmail.com.br", 723);
+
+            Assert.Equal(dicionario, Metodo.DividirEntreEmails(Metodo.SomarValores(listaItem), listaEmail));
+        }
+
+        [Fact]
+        public void TesteQuantoPagar2()
+        {
+            List<Item> listaItem = new();
+            List<Email> listaEmail = new();
+            Dictionary<String, int> dicionario = new();
+
+            Item item = new();
+            item.preco = 1;
+            item.quantidade = 1;
+            item.item = "Banana";
+            listaItem.Add(item);
+
+            Auxiliar.PreencherListaEmail(listaEmail);
+
+            dicionario.Add("lucas@gmail.com.br", 1);
+            dicionario.Add("irineu@gmail.com.br", 0);
+            dicionario.Add("tadeu@gmail.com.br", 0);
+
+            Assert.Equal(dicionario, Metodo.DividirEntreEmails(Metodo.SomarValores(listaItem), listaEmail));
+        }
+
+        [Fact]
+        public void TesteQuantoPagar3()
+        {
+            List<Item> listaItem = new();
+            List<Email> listaEmail = new();
+            Dictionary<String, int> dicionario = new();
+
+            Item item = new();
+            item.preco = 100;
+            item.quantidade = 1;
+            item.item = "Banana";
+            listaItem.Add(item);
+
+            Auxiliar.PreencherListaEmail(listaEmail);
+
+            dicionario.Add("lucas@gmail.com.br", 34);
+            dicionario.Add("irineu@gmail.com.br", 33);
+            dicionario.Add("tadeu@gmail.com.br", 33);
 
             Assert.Equal(dicionario, Metodo.DividirEntreEmails(Metodo.SomarValores(listaItem), listaEmail));
         }
