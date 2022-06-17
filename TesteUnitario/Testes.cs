@@ -51,7 +51,19 @@ namespace TesteUnitario
         [Fact]
         public void TesteDividirEntreEmails()
         {
+            List<Item> listaItem = new();
+            List<Email> listaEmail = new();
+            Dictionary<String, int> dicionario = new();
 
+            Auxiliar.PreencherListaItem(listaItem);
+            Auxiliar.PreencherListaEmail(listaEmail);
+
+            dicionario.Add("lucas@gmail.com.br", 724);
+            dicionario.Add("irineu@gmail.com.br", 723);
+            dicionario.Add("tadeu@gmail.com.br", 723);
+
+            Assert.Equal(dicionario, Metodo.DividirEntreEmails(Metodo.SomarValores(listaItem), listaEmail));
+            
         }
 
     }
