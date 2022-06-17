@@ -41,6 +41,25 @@ namespace TesteUnitario
         }
 
         [Fact]
+        public void TesteValidarEmailsRepetidos()
+        {
+            List<Email> listaEmail = new();
+            Email email = new();
+            email.email = "lucas@gmail.com.br";
+            listaEmail.Add(email);
+
+            email = new();
+            email.email = "irineu@gmail.com.br";
+            listaEmail.Add(email);
+
+            email = new();
+            email.email = "lucas@gmail.com.br";
+            listaEmail.Add(email);
+
+            Assert.True(Metodo.ValidarEmailsRepetidos(listaEmail));
+        }
+
+        [Fact]
         public void TesteValidarNegativo()
         {
             List<Item> listaItem = new();
