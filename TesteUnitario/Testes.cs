@@ -12,20 +12,34 @@ namespace TesteUnitario
         [Fact]
         public void TesteQuantoPagar()
         {
+            List<Item> listaItem = new();
+            List<Email> listaEmail = new();
+            Dictionary<String, int> dicionario = new();
 
+            Auxiliar.PreencherListaItem(listaItem);
+            Auxiliar.PreencherListaEmail(listaEmail);
+
+            dicionario.Add("lucas@gmail.com.br", 724);
+            dicionario.Add("irineu@gmail.com.br", 723);
+            dicionario.Add("tadeu@gmail.com.br", 723);
+
+            Assert.Equal(dicionario, Metodo.DividirEntreEmails(Metodo.SomarValores(listaItem), listaEmail));
         }
+
         [Fact]
         public void TesteValidarListaItemVazia()
         {
             List<Item> listaItem = new();
             Assert.True(Metodo.ValidarListaItemVazia(listaItem));
         }
+
         [Fact]
         public void TesteValidarEmailsRepetidos()
         {
             List<Email> listaEmail = new();
             Assert.True(Metodo.ValidarListaEmailVazia(listaEmail));
         }
+
         [Fact]
         public void TesteValidarNegativo()
         {
@@ -40,6 +54,7 @@ namespace TesteUnitario
 
             Assert.True(Metodo.ValidarNegativo(listaItem));
         }
+
         [Fact]
         public void TesteSomarValores()
         {
@@ -48,6 +63,7 @@ namespace TesteUnitario
 
             Assert.Equal(2170, Metodo.SomarValores(listaItem));
         }
+
         [Fact]
         public void TesteDividirEntreEmails()
         {
@@ -63,7 +79,6 @@ namespace TesteUnitario
             dicionario.Add("tadeu@gmail.com.br", 723);
 
             Assert.Equal(dicionario, Metodo.DividirEntreEmails(Metodo.SomarValores(listaItem), listaEmail));
-            
         }
 
     }
