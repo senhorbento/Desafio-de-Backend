@@ -29,7 +29,16 @@ namespace TesteUnitario
         [Fact]
         public void TesteValidarNegativo()
         {
+            List<Item> listaItem = new();
 
+            Item item = new Item();
+            item.preco = -10;
+            item.quantidade = 10;
+            item.item = "Banana";
+
+            listaItem.Add(item);
+
+            Assert.True(Metodo.ValidarNegativo(listaItem));
         }
         [Fact]
         public void TesteSomarValores()

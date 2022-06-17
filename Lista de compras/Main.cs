@@ -80,7 +80,7 @@ namespace Main
             foreach (Item item in listaItem)
             {
                 if(item.quantidade < 0 || item.preco < 0)
-                return true;
+                    return true;
             }
             return false;
         }
