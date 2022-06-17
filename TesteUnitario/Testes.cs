@@ -43,7 +43,21 @@ namespace TesteUnitario
         [Fact]
         public void TesteSomarValores()
         {
+            List<Item> listaItem = new();
 
+            Item item = new Item();
+            item.preco = 100;
+            item.quantidade = 10;
+            item.item = "Banana";
+            listaItem.Add(item);
+
+            item = new ();
+            item.preco = 234;
+            item.quantidade = 5;
+            item.item = "Uva";
+            listaItem.Add(item);
+
+            Assert.Equal(2170, Metodo.SomarValores(listaItem));
         }
         [Fact]
         public void TesteDividirEntreEmails()
