@@ -71,6 +71,32 @@ namespace TesteUnitario
         }
 
         [Fact]
+        public void TesteQuantoPagar4()
+        {
+            List<Item> listaItem = new();
+            List<Email> listaEmail = new();
+            Dictionary<String, int> dicionario = new();
+
+            Item item = new();
+            item.preco = 102;
+            item.quantidade = 1;
+            item.item = "Banana";
+            listaItem.Add(item);
+
+            Auxiliar.PreencherListaEmail(listaEmail);
+            Email email = new();
+            email.email = "joao@gmail.com.br";
+            listaEmail.Add(email);
+
+            dicionario.Add("lucas@gmail.com.br", 26);
+            dicionario.Add("irineu@gmail.com.br", 26);
+            dicionario.Add("tadeu@gmail.com.br", 25);
+            dicionario.Add("joao@gmail.com.br", 25);
+
+            Assert.Equal(dicionario, Metodo.DividirEntreEmails(Metodo.SomarValores(listaItem), listaEmail));
+        }
+
+        [Fact]
         public void TesteValidarListaItemVazia()
         {
             List<Item> listaItem = new();
